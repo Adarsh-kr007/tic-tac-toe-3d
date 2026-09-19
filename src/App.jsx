@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense, useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls, Environment, Stars } from '@react-three/drei'
 
 import GridLine from './components/GridLine'
@@ -47,12 +47,16 @@ function flipCoin() {
  */
 function WelcomeBoardPreview() {
   const groupRef = useRef(null)
+  const { viewport } = useThree()
 
   const previewCells = [
     'X', 'O', null,
     'O', 'X', null,
     null, null, 'X',
   ]
+
+  const isMobile = viewport.width < 7
+  const isTablet = viewport.width >= 7 && viewport.width < 11
 
   useFrame((state, delta) => {
     if (!groupRef.current) return
@@ -72,11 +76,21 @@ function WelcomeBoardPreview() {
       Math.sin(state.clock.elapsedTime * 0.45) * 0.025
   })
 
+  if (isMobile) {
+    return null
+  }
+
+  const boardPosition = isTablet
+    ? [3.8, -0.35, -1.2]
+    : [4.6, -0.35, -1.2]
+
+  const boardScale = isTablet ? 0.9 : 1.05
+
   return (
     <group
       ref={groupRef}
-      position={[2.9, -0.35, -1]}
-      scale={1.15}
+      position={boardPosition}
+      scale={boardScale}
     >
       <GridLine />
 

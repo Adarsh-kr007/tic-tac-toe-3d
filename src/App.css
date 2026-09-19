@@ -11,6 +11,7 @@
   &:hover {
     border-color: var(--accent-border);
   }
+
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -42,8 +43,8 @@
     z-index: 1;
     top: 34px;
     height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg)
+      rotateY(39deg) scale(1.4);
   }
 
   .vite {
@@ -51,8 +52,8 @@
     top: 107px;
     height: 26px;
     width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg)
+      rotateY(39deg) scale(0.8);
   }
 }
 
@@ -78,6 +79,7 @@
   & > div {
     flex: 1 1 0;
     padding: 32px;
+
     @media (max-width: 1024px) {
       padding: 24px 20px;
     }
@@ -130,6 +132,7 @@
     &:hover {
       box-shadow: var(--shadow);
     }
+
     .button-icon {
       height: 18px;
       width: 18px;
@@ -156,6 +159,7 @@
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
+
   @media (max-width: 1024px) {
     height: 48px;
   }
@@ -177,193 +181,97 @@
     left: 0;
     border-left-color: var(--border);
   }
+
   &::after {
     right: 0;
     border-right-color: var(--border);
   }
 }
 
-
-.welcome-page {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: #03040b;
-}
-
-.welcome-canvas {
-  position: absolute !important;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.welcome-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 2;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(5, 10, 30, 0.05),
-      rgba(3, 4, 11, 0.4)
-    );
-}
-
-.welcome-content {
-  width: min(90%, 800px);
-  text-align: center;
-  pointer-events: auto;
-  padding: 40px 20px;
-}
-
-.welcome-badge {
-  display: inline-block;
-  padding: 7px 15px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(0, 212, 255, 0.35);
-  border-radius: 999px;
-  background: rgba(0, 212, 255, 0.08);
-  color: #00d4ff;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  backdrop-filter: blur(10px);
-}
-
-.welcome-content h1 {
-  margin: 0;
-  color: white;
-  font-size: clamp(52px, 9vw, 110px);
-  line-height: 0.9;
-  font-weight: 900;
-  letter-spacing: -5px;
-  text-shadow:
-    0 0 25px rgba(255,255,255,0.1),
-    0 0 60px rgba(0,212,255,0.12);
-}
-
-.welcome-content h1 span {
-  display: block;
-  margin-top: 10px;
-  background: linear-gradient(90deg, #8a2be2, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.welcome-subtitle {
-  margin: 28px auto 36px;
-  max-width: 600px;
-  color: rgba(255,255,255,0.7);
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.play-button {
-  padding: 16px 46px;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 12px;
-  background: linear-gradient(135deg, #8a2be2, #00d4ff);
-  color: white;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  cursor: pointer;
-  box-shadow:
-    0 0 25px rgba(0,212,255,0.2),
-    0 0 40px rgba(138,43,226,0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.play-button:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow:
-    0 0 35px rgba(0,212,255,0.35),
-    0 0 55px rgba(138,43,226,0.3);
-}
-
-.play-button:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.welcome-features {
-  margin-top: 32px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  color: rgba(255,255,255,0.45);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-}
-
-@media (max-width: 600px) {
-  .welcome-content h1 {
-    letter-spacing: -2px;
-  }
-
-  .welcome-subtitle {
-    font-size: 15px;
-  }
-
-  .play-button {
-    width: 220px;
-  }
-}
-
-/* =========================
+/* =========================================================
    WELCOME PAGE
-========================= */
+========================================================= */
 
 .welcome-page {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100vh;
   overflow: hidden;
-  background: #03040b;
+
+  /* Immediate fallback shown before the 3D environment loads */
+  background:
+    radial-gradient(
+      circle at 22% 28%,
+      rgba(170, 145, 105, 0.42) 0%,
+      rgba(95, 75, 55, 0.25) 28%,
+      rgba(20, 15, 14, 0.8) 58%,
+      #03040b 100%
+    );
+}
+
+.welcome-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 72% 65%,
+      rgba(0, 212, 255, 0.06),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 28% 35%,
+      rgba(138, 43, 226, 0.07),
+      transparent 30%
+    );
 }
 
 .welcome-canvas {
   position: absolute !important;
   inset: 0;
+
   width: 100% !important;
   height: 100% !important;
+
+  z-index: 1;
 }
 
 .welcome-overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   pointer-events: none;
 
   background:
     radial-gradient(
-      circle at 35% 50%,
-      rgba(10, 15, 40, 0.05),
-      rgba(3, 4, 11, 0.42)
+      circle at 38% 48%,
+      rgba(10, 15, 40, 0.03),
+      rgba(3, 4, 11, 0.38)
     );
 }
 
 .welcome-content {
-  width: min(1200px, 90%);
+  width: min(1180px, 92%);
   padding: 40px 20px;
+
   text-align: left;
   pointer-events: auto;
-  transform: translateX(-8%);
+
+  transform: translateX(-5%);
 }
 
 .welcome-badge {
   display: inline-block;
+
   margin-bottom: 20px;
   padding: 8px 16px;
 
@@ -374,12 +282,16 @@
   backdrop-filter: blur(10px);
 
   color: #00d4ff;
+
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 3px;
 }
 
 .welcome-content h1 {
+  width: fit-content;
+  max-width: 760px;
+
   margin: 0;
 
   color: #ffffff;
@@ -397,14 +309,14 @@
 
 .welcome-content h1 span {
   display: block;
+
   margin-top: 10px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #8a2be2,
-      #00d4ff
-    );
+  background: linear-gradient(
+    90deg,
+    #8a2be2,
+    #00d4ff
+  );
 
   -webkit-background-clip: text;
   background-clip: text;
@@ -414,6 +326,7 @@
 
 .welcome-subtitle {
   max-width: 560px;
+
   margin: 28px 0 36px;
 
   color: rgba(255, 255, 255, 0.72);
@@ -428,12 +341,11 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #8a2be2,
-      #00d4ff
-    );
+  background: linear-gradient(
+    135deg,
+    #8a2be2,
+    #00d4ff
+  );
 
   color: #ffffff;
 
@@ -480,11 +392,25 @@
   letter-spacing: 1.5px;
 }
 
-/* Tablet / smaller laptop */
+/* =========================================================
+   TABLET
+========================================================= */
+
 @media (max-width: 1000px) {
+  .welcome-overlay {
+    justify-content: center;
+  }
+
   .welcome-content {
+    width: 90%;
     transform: none;
+
     text-align: center;
+  }
+
+  .welcome-content h1 {
+    width: auto;
+    max-width: 100%;
   }
 
   .welcome-subtitle {
@@ -497,29 +423,52 @@
   }
 }
 
-/* Mobile */
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 600px) {
+  .welcome-page {
+    height: 100dvh;
+    min-height: 100vh;
+  }
+
   .welcome-content {
     width: 92%;
-    padding: 25px 15px;
+    padding: 20px 10px;
   }
 
   .welcome-content h1 {
-    letter-spacing: -2px;
+    font-size: clamp(46px, 15vw, 72px);
+    letter-spacing: -3px;
+    line-height: 0.95;
+  }
+
+  .welcome-content h1 span {
+    margin-top: 8px;
   }
 
   .welcome-subtitle {
+    max-width: 340px;
+
+    margin: 20px auto 28px;
+
     font-size: 15px;
-    margin-top: 22px;
-    margin-bottom: 30px;
   }
 
   .play-button {
     width: 220px;
+    padding: 15px 30px;
   }
 
   .welcome-features {
+    max-width: 330px;
+
+    margin-left: auto;
+    margin-right: auto;
+
     font-size: 9px;
     gap: 8px;
+    line-height: 1.6;
   }
 }
